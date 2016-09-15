@@ -20,11 +20,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FindViewsById();
-        ConfigureViewsClick();
+        findViewsById();
+        configureViewsClick();
     }
 
-    private void FindViewsById() {
+    private void findViewsById() {
         m_ButtonPopularMovies = (Button) findViewById(R.id.buttonPopularMovies);
         m_ButtonStockHawk = (Button) findViewById(R.id.buttonStockHawk);
         m_ButtonBuildItBigger = (Button) findViewById(R.id.buttonBuildItBigger);
@@ -33,46 +33,21 @@ public class MainActivity extends AppCompatActivity {
         m_ButtonCapstone = (Button) findViewById(R.id.buttonCapstone);
     }
 
-    private void ConfigureViewsClick() {
-        m_ButtonPopularMovies.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.m_toast_popular_movies, Toast.LENGTH_SHORT).show();
-            }
-        });
+    private void configureViewsClick() {
+        setDisplayMessage(m_ButtonPopularMovies, R.string.m_toast_popular_movies);
+        setDisplayMessage(m_ButtonStockHawk, R.string.m_toast_stock_hawk);
+        setDisplayMessage(m_ButtonBuildItBigger, R.string.m_toast_build_it_bigger);
+        setDisplayMessage(m_ButtonMakeYourAppMaterial, R.string.m_toast_make_your_app_material);
+        setDisplayMessage(m_ButtonGoUbiquitous, R.string.m_toast_go_ubiquitous);
+        setDisplayMessage(m_ButtonCapstone, R.string.m_toast_capstone);
+    }
 
-        m_ButtonStockHawk.setOnClickListener(new View.OnClickListener() {
+    private void setDisplayMessage(Button viewButton, int toastMessageId) {
+        final String toastMessage = getResources().getString(toastMessageId);
+        viewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.m_toast_stock_hawk, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        m_ButtonBuildItBigger.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.m_toast_build_it_bigger, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        m_ButtonMakeYourAppMaterial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.m_toast_make_your_app_material, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        m_ButtonGoUbiquitous.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.m_toast_go_ubiquitous, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        m_ButtonCapstone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.m_toast_capstone, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, toastMessage, Toast.LENGTH_SHORT).show();
             }
         });
     }
